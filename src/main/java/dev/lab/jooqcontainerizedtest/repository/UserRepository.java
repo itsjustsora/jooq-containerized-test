@@ -2,16 +2,16 @@ package dev.lab.jooqcontainerizedtest.repository;
 
 import static org.jooq.Records.*;
 import static org.jooq.generated.tables.Users.*;
-import static org.yaml.snakeyaml.nodes.NodeId.*;
 
 import java.time.LocalDateTime;
 import java.util.Optional;
 
 import org.jooq.DSLContext;
-import org.jooq.Records;
+import org.springframework.stereotype.Repository;
 
 import dev.lab.jooqcontainerizedtest.domain.User;
 
+@Repository
 public class UserRepository {
 
 	private final DSLContext dslContext;
