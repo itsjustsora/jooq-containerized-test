@@ -11,8 +11,6 @@ public class MemberItemProcessor implements ItemProcessor<Member, Member> {
 	private static final Logger log = LoggerFactory.getLogger(MemberItemProcessor.class);
 
 	/**
-	 * A common paradigm in batch processing is to ingest data,
-	 * transform it, and then pipe it out somewhere else.
 	 * @param member
 	 * @return
 	 * @throws Exception
@@ -23,11 +21,7 @@ public class MemberItemProcessor implements ItemProcessor<Member, Member> {
 		final String lastName = member.lastName().toUpperCase();
 		final String email = member.email();
 
-		final Member trasformedMember = Member.builder()
-			.firstName(firstName)
-			.lastName(lastName)
-			.email(email)
-			.build();
+		final Member trasformedMember = new Member(firstName, lastName, email);
 
 		log.info("Converting (" + member + ") into (" + trasformedMember + ")");
 
