@@ -18,12 +18,23 @@ dependencies {
     // Spring Boot
     implementation 'org.springframework.boot:spring-boot-starter'
     implementation 'org.springframework.boot:spring-boot-starter-batch'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.boot:spring-boot-testcontainers'
 
-    // lombok
+    // Lombok
     implementation 'org.projectlombok:lombok:1.18.24'
     annotationProcessor 'org.projectlombok:lombok:1.18.24'
 
+    // H2 Database
     runtimeOnly 'com.h2database:h2:2.1.214'
+
+    // Testcontainers
+    testImplementation 'org.testcontainers:junit-jupiter'
+    testImplementation 'org.testcontainers:postgresql'
+    testImplementation 'org.testcontainers:testcontainers'
+
+    // Junit
+    testImplementation 'org.junit.jupiter:junit-jupiter'
 
     flywayMigration 'com.h2database:h2:2.1.214'
     jooqGenerator 'com.h2database:h2:2.1.214'
@@ -74,4 +85,8 @@ tasks.named('generateJooq').configure {
 
     // make jOOQ task participate in incremental builds (and build caching)
     allInputsDeclared = true
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
 }
